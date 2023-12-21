@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react' //eslint-disable-line
 import { Map } from 'pigeon-maps'
 import { maptiler } from 'pigeon-maps/providers'
 
@@ -9,7 +9,7 @@ export function MyMap() {
         <Map
             provider={maptilerProvider}
             dprs={[1, 2]}
-            height={500}
+            height={350}
             defaultCenter={[34.0549, -118.2426]}
             defaultZoom={11}
         />
