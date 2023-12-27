@@ -7,6 +7,7 @@ export function CoffeeShopsIndex(props) {
                     <h2>{coffee_shop.name}</h2>
                     <p>Latitude: {coffee_shop.latitude}</p>
                     <p>Longitude: -{coffee_shop.longitude}</p>
+                    <button onClick={() => props.onShowCoffeeShop(coffee_shop)}>More info</button>
                 </div>
             ))}
         </div>
