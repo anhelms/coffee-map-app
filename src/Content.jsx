@@ -4,9 +4,10 @@ import { CoffeeShopsIndex } from "./CoffeeShopsIndex";
 import { CoffeeShopsNew } from "./CoffeeShopsNew";
 import { CoffeeShopsShow } from "./CoffeeShopShow";
 import { Modal } from "./Modal";
+import MyMap from "./MyMap";
 
 export function Content () {
-    const [coffee_shops, setCoffee_shops] = useState([]);
+    const [coffeeShops, setCoffeeShops] = useState([]);
     const[isCoffeeShopsShowVisible, setIsCoffeeShopsShowVisible] = useState(false);
     const [currentCoffeeShop, setCurrentCoffeeShop] = useState({});
 
@@ -14,14 +15,14 @@ export function Content () {
         console.log("handleCoffeeShopsIndex");
         axios.get("http://localhost:3000/coffee_shops.json").then((response) => {
             console.log(response.data);
-            setCoffee_shops(response.data);
+            setCoffeeShops(response.data);
         });
     };
 
     const handleCreateCoffeeShop = (params, successCallback) => {
         console.log("handleCreateCoffeeShop", params);
         axios.post("http://localhost:3000/coffee_shops.json", params).then((response) => {
-            setCoffee_shops([...coffee_shops, response.data]);
+            setCoffeeShops([...coffeeShops, response.data]);
             successCallback();
         });
     };
@@ -35,8 +36,8 @@ export function Content () {
     const handleUpdateCoffeeShop = (id, params, successCallback) => {
         console.log("handleUpdateCoffeeShop", params);
         axios.patch(`http://localhost:3000/coffee_shops/${id}.json`, params).then((response) => {
-            setCoffee_shops(
-                coffee_shops.map((coffee_shop) => {
+            setCoffeeShops(
+                coffeeShops.map((coffee_shop) => {
                     if (coffee_shop.id === response.data.id) {
                         return response.data;
                     } else {
@@ -52,7 +53,7 @@ export function Content () {
     const handleDestroyCoffeeShop = (coffee_shop) => {
         console.log("handleDestroyCoffeeShop", coffee_shop);
         axios.delete(`http://localhost:3000/coffee_shops/${coffee_shop.id}.json`).then((response) => {
-            setCoffee_shops(coffee_shops.filter((p) => p.id !== coffee_shop.id));
+            setCoffeeShops(coffeeShops.filter((p) => p.id !== coffee_shop.id));
             handleClose();
         });
     };
@@ -68,10 +69,11 @@ export function Content () {
         <div>
             <h1>Welcome to Coffee Maps!</h1>
             <CoffeeShopsNew onCreateCoffeeShop={handleCreateCoffeeShop} />
-            <CoffeeShopsIndex coffee_shops={coffee_shops} onShowCoffeeShop={handleShowCoffeeShop} />
+            <CoffeeShopsIndex coffeeShops={coffeeShops} onShowCoffeeShop={handleShowCoffeeShop} />
             <Modal show={isCoffeeShopsShowVisible} onClose={handleClose}>
-                <CoffeeShopsShow coffee_shop={currentCoffeeShop} onUpdateCoffeeShop={handleUpdateCoffeeShop} onDestroyCoffeeShop={handleDestroyCoffeeShop} />
+                <CoffeeShopsShow coffeeShop={currentCoffeeShop} onUpdateCoffeeShop={handleUpdateCoffeeShop} onDestroyCoffeeShop={handleDestroyCoffeeShop} />
             </Modal>
+            <MyMap coffeeShops={coffeeShops} />
         </div>
     );
 }

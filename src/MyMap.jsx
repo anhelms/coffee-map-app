@@ -1,24 +1,28 @@
-import React, { useState } from 'react' //eslint-disable-line
-import { Map, Marker } from 'pigeon-maps'
-import { maptiler } from 'pigeon-maps/providers'
+import React from 'react'; //eslint-disable-line
+import { Map, Marker } from 'pigeon-maps';
 
-const maptilerProvider = maptiler(import.meta.env.VITE_MY_API_KEY ,'streets')
+const MyMap = ( { coffeeShops }) => {
+  console.log('Coffee Shops:', coffeeShops);
+  if (!coffeeShops) {
+    return null;
+  }
 
-export function MyMap() {
-    const [hue, setHue] = useState(0)
-    const color = `hsl(${hue % 360}deg 39% 70%)`
-    return (
-        <Map provider={maptilerProvider} dprs={[1, 2]} height={350} defaultCenter={[34.0549, -118.2426]}defaultZoom={11}>
-            <Marker width={50} anchor={[50.879, 4.6997]} color={color} onClick={() => setHue(hue + 20)}/>
-      <Marker 
-        width={50}
-        anchor={[34.0549, -118.2426]} 
-        color={color} 
-        onClick={() => setHue(hue + 20)} 
-      >
-          {/* <CustomIcon /> */}
-      </Marker>
-      </Map>
+  return (
+    <Map center={[34.0549, -118.2426]} zoom={12} width={600} height={400}>
+      {coffeeShops.map(coffeeShop => (
+        <Marker key={coffeeShop.id} anchor={[parseFloat(coffeeShop.latitude), parseFloat(coffeeShop.longitude)]}  color='red' width={75}>
+          {/* <div
+            style={{
+              width: '20px',
+              height: '20px',
+              backgroundColor: 'red',
+              borderRadius: '50%',
+            }}
+          /> */}
+        </Marker>
+      ))}
+    </Map>
+  );
+};
 
-    )
-    }
+export default MyMap;

@@ -1,6 +1,6 @@
 import { Header } from "./Header";
 import { Content } from "./Content";
-import { MyMap } from "./MyMap";
+import MyMap from "./MyMap";
 import { Footer } from "./Footer";
 
 function App() {
