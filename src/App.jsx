@@ -1,7 +1,8 @@
 import { Header } from "./Header";
 import { Content } from "./Content";
-import { Signup } from "./Signup";
 import MyMap from "./MyMap";
+import { Login } from "./Login";
+import { Signup } from "./Signup";
 import { Footer } from "./Footer";
 
 function App() {
@@ -9,8 +10,9 @@ function App() {
     <div>
       <Header />
       <Content />
-      <Signup />
       <MyMap />
+      <Login />
+      <Signup />
       <Footer />
     </div>
   )
