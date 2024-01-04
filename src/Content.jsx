@@ -67,13 +67,15 @@ export function Content () {
 
     return (
         <div>
+            <img src="src/images/world.png" width="200" height="200" className="center" alt="globe with coffee ping" />
             <h1>Welcome to Coffee Maps!</h1>
+            <h4>A directory for your local favorites</h4>
+            <MyMap coffeeShops={coffeeShops} />
             <CoffeeShopsNew onCreateCoffeeShop={handleCreateCoffeeShop} />
             <CoffeeShopsIndex coffeeShops={coffeeShops} onShowCoffeeShop={handleShowCoffeeShop} />
             <Modal show={isCoffeeShopsShowVisible} onClose={handleClose}>
                 <CoffeeShopsShow coffeeShop={currentCoffeeShop} onUpdateCoffeeShop={handleUpdateCoffeeShop} onDestroyCoffeeShop={handleDestroyCoffeeShop} />
             </Modal>
-            <MyMap coffeeShops={coffeeShops} />
         </div>
     );
 }

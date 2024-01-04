@@ -12,7 +12,7 @@ export function CoffeeShopsShow(props) {
 
     return (
         <div>
-            <h1>Coffee Shop information</h1>
+            <h2>Coffee Shop information</h2>
             <p> Name: {props.coffeeShop.name}</p>
             <p>Latitude: {props.coffeeShop.latitude}</p>
             <p>Longitude: {props.coffeeShop.longitude}</p>

@@ -7,16 +7,16 @@ export function CoffeeShopsNew(props) {
     };
 
     return (
-        <div>
-            <h1>New Coffee Shop</h1>
+        <div className="form-container">
+            <h2>New Coffee Shop</h2>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     Name: <input name="name" type="text" />
                 </div>
-                <div>
+                <div className="form-group">
                     Latitude: <input name="latitude" type="text" />
                 </div>
-                <div>
+                <div className="form-group">
                     Longitude: <input name="longitude" type="text" />
                 </div>
                 <button type="submit">Create Coffee Shop</button>

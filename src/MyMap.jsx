@@ -8,20 +8,15 @@ const MyMap = ( { coffeeShops }) => {
   }
 
   return (
-    <Map center={[34.0549, -118.2426]} zoom={12} width={600} height={400}>
-      {coffeeShops.map(coffeeShop => (
-        <Marker key={coffeeShop.id} anchor={[parseFloat(coffeeShop.latitude), parseFloat(coffeeShop.longitude)]}  color='red' width={75}>
-          {/* <div
-            style={{
-              width: '20px',
-              height: '20px',
-              backgroundColor: 'red',
-              borderRadius: '50%',
-            }}
-          /> */}
-        </Marker>
-      ))}
-    </Map>
+    <div className="map-container">
+      <Map center={[34.0549, -118.2426]} zoom={12} width={1000} height={400}>
+        {coffeeShops.map(coffeeShop => (
+          <Marker key={coffeeShop.id} anchor={[parseFloat(coffeeShop.latitude), parseFloat(coffeeShop.longitude)]}  color='red' width={75}>
+            <img src="src/images/coffee-ping.png" alt="coffee marker"/>
+          </Marker>
+        ))}
+      </Map>
+    </div>
   );
 };
 
