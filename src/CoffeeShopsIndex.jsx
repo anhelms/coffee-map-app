@@ -5,6 +5,7 @@ export function CoffeeShopsIndex(props) {
             {props.coffeeShops.map((coffeeShop) => (
                 <div key={coffeeShop.id}>
                     <h3>{coffeeShop.name}</h3>
+                    <img src={coffeeShop.image_url} />
                     <p>Latitude: {coffeeShop.latitude}</p>
                     <p>Longitude: {coffeeShop.longitude}</p>
                     <button onClick={() => props.onShowCoffeeShop(coffeeShop)}>More info</button>

@@ -1,9 +1,19 @@
+import { useState } from "react";
+
 export function CoffeeShopsNew(props) {
+    const [uploadedImg, setUploadedImg] = useState(null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const params = new FormData(event.target);
+        params.append("image_file", uploadedImg);
         props.onCreateCoffeeShop(params, () => event.target.reset());
+    };
+
+    const handleSetFile = event => {
+        if (event.target.files.length > 0) {
+        setUploadedImg(event.target.files[0]);
+        }
     };
 
     return (
@@ -18,6 +28,9 @@ export function CoffeeShopsNew(props) {
                 </div>
                 <div className="form-group">
                     Longitude: <input name="longitude" type="text" />
+                </div>
+                <div className="form-group">
+                    Upload Image: <input name="image" type="file" onChange={handleSetFile} />
                 </div>
                 <button type="submit">Create Coffee Shop</button>
             </form>
