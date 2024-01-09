@@ -30,6 +30,9 @@ export function CoffeeShopsNew(props) {
                     Longitude: <input name="longitude" type="text" />
                 </div>
                 <div className="form-group">
+                    Upload Image Url: <input name="image" type="image_url" />
+                </div>
+                <div className="form-group">
                     Upload Image: <input name="image" type="file" onChange={handleSetFile} />
                 </div>
                 <button type="submit">Create Coffee Shop</button>

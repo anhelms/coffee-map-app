@@ -14,7 +14,7 @@ export function CoffeeShopsShow(props) {
         <div>
             <h2>Coffee Shop information</h2>
             <p> Name: {props.coffeeShop.name}</p>
-            <img src={props.coffeeShop.image} />
+            <img src={props.coffeeShop.image_url} width={200} height={200} />
             <p>Latitude: {props.coffeeShop.latitude}</p>
             <p>Longitude: {props.coffeeShop.longitude}</p>
             <form onSubmit={handleSubmit}>
@@ -30,7 +30,7 @@ export function CoffeeShopsShow(props) {
                 <div>
                     Longitude: <input defaultValue={props.coffeeShop.longitude} name="longitude" type="text" />
                 </div>
-                <button type="submit">Update Coffee Shop</button>
+                <button className="update" type="submit">Update Coffee Shop</button>
             </form>
             {props.coffeeShop.reviews.length > 0 ? (<div>
                 <div>
@@ -41,13 +41,16 @@ export function CoffeeShopsShow(props) {
                         <div>
                             {review.description}
                         </div>
+                <div>
+                    Rating:
+                </div>
                         <div>
                             {review.rating}
                         </div>
                     </div>
                 ))}
             </div>) : (<></>)}
-            <button onClick={handleClick}>Destroy coffee shop</button>
+            <button className="remove" onClick={handleClick}>Destroy coffee shop</button>
         </div>
     );
 }

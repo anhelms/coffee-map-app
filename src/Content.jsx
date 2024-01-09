@@ -72,6 +72,7 @@ export function Content () {
             <h4>A directory for your local favorites</h4>
             <MyMap coffeeShops={coffeeShops} />
             <CoffeeShopsNew onCreateCoffeeShop={handleCreateCoffeeShop} />
+            <h6>All Coffee Shops</h6>
             <CoffeeShopsIndex coffeeShops={coffeeShops} onShowCoffeeShop={handleShowCoffeeShop} />
             <Modal show={isCoffeeShopsShowVisible} onClose={handleClose}>
                 <CoffeeShopsShow coffeeShop={currentCoffeeShop} onUpdateCoffeeShop={handleUpdateCoffeeShop} onDestroyCoffeeShop={handleDestroyCoffeeShop} />
