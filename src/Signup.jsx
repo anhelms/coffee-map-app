@@ -1,20 +1,22 @@
 import axios from "axios";
 import { useState } from "react";
 
-export function Signup() {
+export function Signup(props) {
     const [errors, setErrors] = useState([]);
+
+    const [uploadedImg, setUploadedImg] = useState(null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setErrors([]);
         const params = new FormData(event.target);
-        axios
-            .post("/users.json", params)
-            .then((response) => {
-                console.log(response.data);
-                event.target.reset();
-                window.location.href = "/";
-            });
+        params.append("image_file", uploadedImg);
+        props.onCreateCoffeeShop(params, () => event.target.reset());
+    };
+
+    const handleSetFile = event => {
+        if (event.target.files.length > 0) {
+        setUploadedImg(event.target.files[0]);
+        }
     };
 
     return(
