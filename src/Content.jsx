@@ -13,7 +13,7 @@ export function Content () {
 
     const handleCoffeeShopsIndex = () => {
         console.log("handleCoffeeShopsIndex");
-        axios.get("http://localhost:3000/coffee_shops.json").then((response) => {
+        axios.get("/coffee_shops.json").then((response) => {
             console.log(response.data);
             setCoffeeShops(response.data);
         });
@@ -21,7 +21,7 @@ export function Content () {
 
     const handleCreateCoffeeShop = (params, successCallback) => {
         console.log("handleCreateCoffeeShop", params);
-        axios.post("http://localhost:3000/coffee_shops.json", params).then((response) => {
+        axios.post("/coffee_shops.json", params).then((response) => {
             setCoffeeShops([...coffeeShops, response.data]);
             successCallback();
         });
@@ -35,7 +35,7 @@ export function Content () {
 
     const handleUpdateCoffeeShop = (id, params, successCallback) => {
         console.log("handleUpdateCoffeeShop", params);
-        axios.patch(`http://localhost:3000/coffee_shops/${id}.json`, params).then((response) => {
+        axios.patch(`/coffee_shops/${id}.json`, params).then((response) => {
             setCoffeeShops(
                 coffeeShops.map((coffee_shop) => {
                     if (coffee_shop.id === response.data.id) {
@@ -52,7 +52,7 @@ export function Content () {
 
     const handleDestroyCoffeeShop = (coffee_shop) => {
         console.log("handleDestroyCoffeeShop", coffee_shop);
-        axios.delete(`http://localhost:3000/coffee_shops/${coffee_shop.id}.json`).then((response) => {
+        axios.delete(`/coffee_shops/${coffee_shop.id}.json`).then((response) => {
             setCoffeeShops(coffeeShops.filter((p) => p.id !== coffee_shop.id));
             handleClose();
         });
