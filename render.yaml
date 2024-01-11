@@ -1,4 +1,0 @@
-static:
-  - include: /src/images/**
-    bucketName: your-static-bucket
-    region: us-west-2
