@@ -1,4 +1,0 @@
-static:
-  - include: /images/**
-    bucketName: your-render-static-bucket
-    region: us-west-2
