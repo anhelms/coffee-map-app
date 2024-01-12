@@ -34,7 +34,7 @@ const MyMap = ( { coffeeShops }) => {
               handleMarkerClick(coffeeShop);
             }}
             >
-            {/* <img src="src/images/coffee-ping.png" alt="coffee marker"/> */}
+            {/* <img src="/images/coffee-ping.png" alt="coffee marker"/> */}
           </Marker>
         ))}
       </Map>
