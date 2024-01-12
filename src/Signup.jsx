@@ -6,11 +6,29 @@ export function Signup(props) {
 
     const [uploadedImg, setUploadedImg] = useState(null);
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     const params = new FormData(event.target);
+    //     params.append("image_file", uploadedImg);
+    //     props.on(params, () => event.target.reset());
+    // };
+
     const handleSubmit = (event) => {
         event.preventDefault();
+        setErrors([]);
         const params = new FormData(event.target);
         params.append("image_file", uploadedImg);
-        props.onCreateCoffeeShop(params, () => event.target.reset());
+        axios
+        .post("/users.json", params)
+        .then((response) => {
+            console.log(response.data);
+            event.target.reset();
+            window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+        })
+        .catch((error) => {
+            console.log(error.response.data.errors);
+            setErrors(error.response.data.errors);
+        });
     };
 
     const handleSetFile = event => {
