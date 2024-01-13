@@ -24,10 +24,7 @@ export function CoffeeShopsNew(props) {
                     Name: <input name="name" type="text" />
                 </div>
                 <div className="form-group">
-                    Latitude: <input name="latitude" type="text" />
-                </div>
-                <div className="form-group">
-                    Longitude: <input name="longitude" type="text" />
+                    Address: <input name="address" type="text" />
                 </div>
                 <div className="form-group">
                     Upload Image Url: <input name="image" type="image_url" />
