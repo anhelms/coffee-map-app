@@ -50,6 +50,22 @@ export function Content () {
         });
     };
 
+    const handleCreateReview = (coffee_shop, params, successCallback) => {
+        console.log("handleCreateReview", params);
+        axios.post(`/coffee_shops/${coffee_shop}/reviews.json`, params).then((response) => {
+            successCallback();
+            setCoffeeShops(coffeeShops.map((coffeeShop) => {
+                if (coffeeShop.id === coffee_shop) {
+                    coffeeShop.reviews.push(response.data);
+                }
+                return coffeeShop;
+            }));
+        })
+         .catch((error) => {
+            console.error("Error creating review:", error);
+        });
+    }
+
     const handleDestroyCoffeeShop = (coffee_shop) => {
         console.log("handleDestroyCoffeeShop", coffee_shop);
         axios.delete(`/coffee_shops/${coffee_shop.id}.json`).then((response) => {
@@ -66,7 +82,7 @@ export function Content () {
     useEffect(handleCoffeeShopsIndex, []);
 
     return (
-        <div>
+        <div className="content">
             <img src="/images/world.png" width="200" height="200" className="center" alt="globe with coffee ping" />
             <h1>Welcome to Coffee Maps!</h1>
             <h4>A directory for your local favorites</h4>
@@ -75,7 +91,7 @@ export function Content () {
             <h6>All Coffee Shops</h6>
             <CoffeeShopsIndex coffeeShops={coffeeShops} onShowCoffeeShop={handleShowCoffeeShop} />
             <Modal show={isCoffeeShopsShowVisible} onClose={handleClose}>
-                <CoffeeShopsShow coffeeShop={currentCoffeeShop} onUpdateCoffeeShop={handleUpdateCoffeeShop} onDestroyCoffeeShop={handleDestroyCoffeeShop} />
+                <CoffeeShopsShow coffeeShop={currentCoffeeShop} onUpdateCoffeeShop={handleUpdateCoffeeShop} onCreateReview={handleCreateReview} onDestroyCoffeeShop={handleDestroyCoffeeShop} />
             </Modal>
         </div>
     );
