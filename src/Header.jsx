@@ -1,5 +1,7 @@
+import React, { useState } from "react";
+import DemoAccount from './DemoAccount';
 import axios from "axios";
-import { useState } from "react";
+
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -43,6 +45,7 @@ export function Header() {
         </a>
         <div className="login-container">
             <form onSubmit={handleSubmit}>
+                <DemoAccount />
                 <input type="text" placeholder="email" name="email"/>
                 <input type="text" placeholder="password" name="password"/>
                 <button className="log" type="submit">Login</button>

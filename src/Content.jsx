@@ -58,7 +58,7 @@ export function Content () {
                 if (coffeeShop.id === coffee_shop) {
                     coffeeShop.reviews.push(response.data);
                 }
-                return coffeeShop;
+                return coffeeShop
             }));
         })
          .catch((error) => {
