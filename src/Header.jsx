@@ -39,13 +39,13 @@ export function Header() {
 
     return (
         <nav className="navbar">
-        <a className="navbar-brand" href="#">
+                 <DemoAccount />
+        {/* <a className="navbar-brand" href="#">
             <img src="/images/coffee-map.png" width="30" height="30" className="d-inline-block align-top" alt="globe with coffee ping"/>
             Coffee Maps
-        </a>
+        </a> */}
         <div className="login-container">
             <form onSubmit={handleSubmit}>
-                <DemoAccount />
                 <input type="text" placeholder="email" name="email"/>
                 <input type="text" placeholder="password" name="password"/>
                 <button className="log" type="submit">Login</button>
