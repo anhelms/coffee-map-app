@@ -97,7 +97,7 @@ export function CoffeeShopsShow(props) {
                         <div>Rating: 
                                 {[1, 2, 3, 4, 5].map((value) => (
                                     <span key={value}>
-                                        {value <= review.rating ? '★' : '☆'}
+                                        {value <= review.rating ? '☕' : ''}
                                     </span>
                                 ))}
                         </div>
